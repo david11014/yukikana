@@ -1,0 +1,5 @@
+APIKEY = "[api key ]"
+APISECRET = "[api secret ]"
+TOKENKEY = "[token key ]"
+TOKENSECRET = "[token secret ]"
+MYSITE = "[weather report site ]"
