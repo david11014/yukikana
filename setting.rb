@@ -1,17 +1,72 @@
 @setting = {"APIKEY" => "","APISECRET" => "","TOKENKEY" => "","TOKENSECRET" => "","MYSITE" => ""}
 @filename = "setting"
 
+def settinginit
+	
+	if(FileTest::exist?("setting") != true)
+                fileinit();
+        end
+	rsetting()
+	chsetting()
+
+end
+
+def fileinit()
+
+        print "Please entry api key:\n"
+
+        @setting["APIKEY"] = gets.chomp
+
+        print "Please entry api sercrt key:\n"
+        @setting["APISECRET"] = gets.chomp
+
+        print "Please entry token key:\n"
+        @setting["TOKENKEY"] = gets.chomp
+
+        print "Please entry token secret key:\n"
+        @setting["TOKENSECRET"] = gets.chomp
+
+        print "Please entry origin report site:\n"
+        @setting["MYSITE"] = gets.chomp
+	
+        wsetting()
+	psetting()
+end
+
+def chsetting
+
+	@setting.each{|key,value|
+
+        	if(@setting[key] == "")
+			print key + " is NULL\n"
+			fileinit()
+		end
+        }
+
+end
+
+def psetting
+
+        @setting.each{|key,value|
+         	
+		print key + ": " + value +"\n"
+       
+        }
+
+end
+
 def rsetting
 
+	print "read setting... \n"	
 	open(@filename,"r") do |io|
 
 	        while line = io.gets
 		        line.chomp!
-        		/([a-zA-Z0-9_]+)[ ]*=[ ]*['"]([a-zA-Z0-9\u4e00-\u9fa5]+)['"]/ =~ line
+        		/([a-zA-Z0-9_]+)[ ]*=[ ]*['"]([a-zA-Z0-9\u4e00-\u9fa5]*)['"]/ =~ line
 
 		        setting_key = $1
 		        setting_value = $2
-	
+
         		if (@setting.key?(setting_key))
                 		@setting[setting_key] = setting_value
 	                	print setting_key + ": " + setting_value + "\n"
@@ -40,6 +95,7 @@ def chapi(key,secret)
 
 	@setting["APIKEY"] = key
 	@settingp["APISECRET"] = secret
+	wsetting()
 
 end
 
@@ -47,5 +103,14 @@ def chtoken(key,secret)
 
 	@setting["TOKENKEY"] = key
 	@setting["TOKENSECRET"] = secret
+	wsetting()
 
 end
+
+def chsite(site)
+	
+	$setting["MYSITE"] = site
+        wsetting()
+
+end
+

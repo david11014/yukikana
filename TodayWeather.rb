@@ -5,7 +5,7 @@ require './setting.rb'
 require './weather_data_base.rb'
 require 'time'
 #Setup OAuth client by create a instance of Plurk class
-rsetting() #read setting file
+settinginit() #read setting file
 $plurk = Plurk.new(@setting["APIKEY"], @setting["APISECRET"])
 $plurk.authorize(@setting["TOKENKEY"], @setting["TOKENSECRET"])
 $mysite = @setting["MYSITE"]
@@ -502,11 +502,11 @@ print "Today weather ykikana start"+"\n"
 
 
 Thread.new{
-#p "reportweather start"
+
 while true
 	
 	#print "reportweather start"+"\n"
-    t=Time.now
+    	t=Time.now
 	begin 
 	if t.hour == 7 && (t.min == 00||t.min ==01)   #7:00|7:01
 		todayweatherreport($mysite,nil)
@@ -550,33 +550,34 @@ Thread.new{
 
 while true
 
-	cmd = gets.chomp	
-	if cmd == "wetoday"
-		todayweatherreport($mysite,nil)
-	end
-	if cmd == "wetomorrow"
-		tomorrowweatherreport($mysite,nil)
-	end
-	if cmd == "wenow"
-		nowweatherreport($mysite,nil)
-	end
+	#cmd = gets.chomp	
 	
-	if cmd == "ch"
-		checkcommand()
-	end 
+	case gets.chomp
+		when "wetoday"
+			todayweatherreport($mysite,nil)
+		
 	
-	if cmd =="close"
-		break
-	end
+		when "wetomorrow"
+			tomorrowweatherreport($mysite,nil)
+	
+		when "wenow"
+			nowweatherreport($mysite,nil)
+	
+		when "ch"
+			checkcommand()
+		
+		when "close"
+			break
 
-	if cmd == "chsite"
-		puts "請輸入地名"+"\n" 
-		cmd = gets.chomp
-		old_site = $mysite
-		$mysite = cmd 
-		s = "因為愛理搬家了 所以預報地區從"+ old_site.to_s+"換成"+$mysite.to_s+"了歐 >///<"
-		puts(s)
-		addPlurk(s,nil)
+		when "chsite"
+			puts "請輸入地名"+"\n" 
+			cmd = gets.chomp
+			old_site = $mysite
+			$mysite = cmd 
+			chsite()
+			s = "因為愛理搬家了 所以預報地區從"+ old_site.to_s+"換成"+$mysite.to_s+"了歐 >///<"
+			puts(s)
+			addPlurk(s,nil)
 	end
 
 	if cmd == "nowsite"
