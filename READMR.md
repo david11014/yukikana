@@ -21,26 +21,26 @@ Command
 --------
 
 
-close the program:
-		-close 
+close the program</br>
+		>close 
 
-report now weather:
-		wenow
+report now weather</br>
+		>wenow
 
-report todat weather:
-		wetoday
+report todat weather</br>
+		>wetoday
 
-report tomorrow weather:
-		wetomorrow
+report tomorrow weather</br>
+		>wetomorrow
 
-change the report site
-		chsite
+change the report site</br>
+		>chsite
 
-print now report site
-		nowsite
+print now report site</br>
+		>nowsite
 
-check the plurk on the plurk
-		check
+check the plurk on the plurk</br>
+			>check
 
 
 
