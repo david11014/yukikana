@@ -563,7 +563,7 @@ while true
 		when "wenow"
 			nowweatherreport($mysite,nil)
 	
-		when "ch"
+		when "check"
 			checkcommand()
 		
 		when "close"
@@ -578,10 +578,10 @@ while true
 			s = "因為愛理搬家了 所以預報地區從"+ old_site.to_s+"換成"+$mysite.to_s+"了歐 >///<"
 			puts(s)
 			addPlurk(s,nil)
-	end
 
-	if cmd == "nowsite"
-		puts "現在的預報位置:"+$mysite
+		when "nowsite"
+			 puts "現在的預報位置:"+$mysite
+		
 	end
 
  end
