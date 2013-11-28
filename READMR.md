@@ -9,38 +9,38 @@ Prepare
 
 please install those ruby plugin
 
--gem install oauth
--gem install json
--gem install xml-simple
+		gem install oauth
+		gem install json
+		gem install xml-simple
 
 change to the projet folder 
 
--ruby Todayweather.rb
+		ruby Todayweather.rb
 
 Command
 --------
 
 
 close the program:
- -close 
+		-close 
 
 report now weather:
- -wenow
+		wenow
 
 report todat weather:
- -wetoday
+		wetoday
 
 report tomorrow weather:
- -wetomorrow
+		wetomorrow
 
 change the report site
--chsite
+		chsite
 
 print now report site
--nowsite
+		nowsite
 
 check the plurk on the plurk
--check
+		check
 
 
 
