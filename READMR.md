@@ -22,25 +22,25 @@ Command
 
 
 close the program</br>
-		>close 
+  > close  
 
 report now weather</br>
-		>wenow
+  >wenow  
 
 report todat weather</br>
-		>wetoday
+  > wetoday  
 
 report tomorrow weather</br>
-		>wetomorrow
+  > wetomorrow  
 
 change the report site</br>
-		>chsite
+  > chsite  
 
 print now report site</br>
-		>nowsite
+  > nowsite  
 
 check the plurk on the plurk</br>
-			>check
+  > check  
 
 
 
