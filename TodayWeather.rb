@@ -574,7 +574,7 @@ while true
 			cmd = gets.chomp
 			old_site = $mysite
 			$mysite = cmd 
-			chsite()
+			chsite(cmd)
 			s = "因為愛理搬家了 所以預報地區從"+ old_site.to_s+"換成"+$mysite.to_s+"了歐 >///<"
 			puts(s)
 			addPlurk(s,nil)

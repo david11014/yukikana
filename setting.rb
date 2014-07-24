@@ -1,9 +1,9 @@
 @setting = {"APIKEY" => "","APISECRET" => "","TOKENKEY" => "","TOKENSECRET" => "","MYSITE" => ""}
-@filename = "setting"
+@filename = "setting.db"
 
 def settinginit
 	
-	if(FileTest::exist?("setting") != true)
+	if(FileTest::exist?(@filename) != true)
                 fileinit();
         end
 	rsetting()
@@ -109,7 +109,7 @@ end
 
 def chsite(site)
 	
-	$setting["MYSITE"] = site
+	@setting["MYSITE"] = site
         wsetting()
 
 end
