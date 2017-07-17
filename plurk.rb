@@ -9,7 +9,7 @@ class Plurk
 	def initialize(key, secret)
 		@key, @secret = key, secret
 		@consumer = OAuth::Consumer.new(@key, @secret, {
-			:site               => 'http://www.plurk.com',
+			:site               => 'https://www.plurk.com',
 			:scheme             => :header,
 			:http_method        => :post,
 			:request_token_path => '/OAuth/request_token',
