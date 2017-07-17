@@ -9,6 +9,7 @@ settinginit() #read setting file
 $plurk = Plurk.new(@setting["APIKEY"], @setting["APISECRET"])
 $plurk.authorize(@setting["TOKENKEY"], @setting["TOKENSECRET"])
 $mysite = @setting["MYSITE"]
+$weid = @setting["WEID"]
 
 $prevent_flag = true
 
@@ -588,7 +589,10 @@ while true
 
 		when "nowsite"
 			 puts "現在的預報位置:"+$mysite
-		
+			 
+		when "test"
+			addPlurk("愛理發文系統測試中",nil)
+			 
 	end
 
  end

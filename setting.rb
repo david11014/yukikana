@@ -1,4 +1,4 @@
-﻿@setting = {"APIKEY" => "","APISECRET" => "","TOKENKEY" => "","TOKENSECRET" => "","MYSITE" => ""}
+﻿@setting = {"APIKEY" => "","APISECRET" => "","TOKENKEY" => "","TOKENSECRET" => "","MYSITE" => "","WEID" =>""}
 @filename = "setting.db"
 
 def settinginit
@@ -28,7 +28,10 @@ def fileinit()
 
         print "Please entry origin report site:\n"
         @setting["MYSITE"] = gets.chomp
-	
+		
+		print "Please entry openweather map API key:\n"
+        @setting["WEID"] = gets.chomp
+		
         wsetting()
 	psetting()
 end
@@ -58,11 +61,11 @@ end
 def rsetting
 
 	print "read setting... \n"	
-	open(@filename,"r") do |io|
+	open(@filename,"r:utf-8") do |io|
 
 	        while line = io.gets
 		        line.chomp!
-        		/([a-zA-Z0-9_]+)[ ]*=[ ]*['"]([a-zA-Z0-9\u4e00-\u9fa5]*)['"]/ =~ line
+        		/([a-zA-Z0-9_]+)[ ]*=[ ]*['"]([a-zA-Z0-9\u4E00-\u9fA5]*)['"]/ =~ line
 
 		        setting_key = $1
 		        setting_value = $2
@@ -81,10 +84,10 @@ end
 
 def wsetting
 	
-	io = open(@filename,"w")
+	io = open(@filename,"w:utf-8")
 
 	@setting.each{|key,value|
-		io.puts("#{key} = \"#{value}\"")
+		io.puts("#{key.encode('UTF-8')} = \"#{value.encode('UTF-8')}\"")
 	}
 
 	io.close
