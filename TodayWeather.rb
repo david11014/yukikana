@@ -569,11 +569,12 @@ while true
 		when "close"
 			break
 		when "rcity"
-			#CityUrl = "https://works.ioa.tw/weather/api/all.json"
-			CityUrl ="https://works.ioa.tw/weather/api/towns/1.json"
+			CityUrl = "https://works.ioa.tw/weather/api/all.json"
 			puts(JSON.parse(Net::HTTP.get_response(URI.parse(CityUrl)).body))
-			CityUrl = "https://works.ioa.tw/weather/api/weathers/1.json"
-			puts(JSON.parse(Net::HTTP.get_response(URI.parse(CityUrl)).body))							
+			#CityUrl ="https://works.ioa.tw/weather/api/towns/1.json"
+			#puts(JSON.parse(Net::HTTP.get_response(URI.parse(CityUrl)).body))
+			#CityUrl = "https://works.ioa.tw/weather/api/weathers/1.json"
+			#puts(JSON.parse(Net::HTTP.get_response(URI.parse(CityUrl)).body))					
 			
 		when "chsite"
 			puts "請輸入地名"+"\n" 
