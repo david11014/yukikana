@@ -383,28 +383,28 @@ def weatherString(time,local,mode)  #mode: 1 = 愛理, 2 = GEJI姐
 		when "now"
 			
 			if mode == 1
-				s = "天氣預報 天氣預報 現在"+$w.localText(local)+"地區 天氣"+ $w.code2text(nowcode) +"  "+ "溫度" + $w.nowTemp + "\n" + weatherDB(nowcode,mode)
+				s = "天氣預報 天氣預報 現在"+$w.localText(local)+"地區 天氣"+ $w.code2text(nowcode) +"  "+ "溫度" + $w.nowTemp.round.to_s + "\n" + weatherDB(nowcode,mode)
 			end
 			if mode == 2
-				s = "現在"+$w.localText(local)+"地區 天氣"+ $w.code2text(nowcode) + "  " + "溫度" + $w.nowTemp + "\n" + weatherDB(nowcode,mode)
+				s = "現在"+$w.localText(local)+"地區 天氣"+ $w.code2text(nowcode) + "  " + "溫度" + $w.nowTemp.round.to_s + "\n" + weatherDB(nowcode,mode)
 			end
 			
 		when "today"
 			
 			if mode == 1
-				s = "天氣預報 天氣預報 今天"+ $w.localText(local) + "地區 天氣"+ $w.code2text(todaycode) + "  " + "溫度" + ($w.todayHighTemp-273.15).round.to_s + "到" + ($w.todayLowTemp-273.15).round.to_s + "\n" + weatherDB(todaycode,mode)
+				s = "天氣預報 天氣預報 今天"+ $w.localText(local) + "地區 天氣"+ $w.code2text(todaycode) + "  " + "溫度" + $w.todayHighTemp.round.to_s + "到" + $w.todayLowTemp.round.to_s + "\n" + weatherDB(todaycode,mode)
 			end
 			if mode == 2
-				s = "今天"+$w.localText(local)+"地區 天氣"+ $w.code2text(todaycode) + "  " + "溫度" + ($w.todayHighTemp-273.15).round.to_s + "到" + ($w.todayLowTemp-273.15).round.to_s + "\n" + weatherDB(todaycode,mode)
+				s = "今天"+$w.localText(local)+"地區 天氣"+ $w.code2text(todaycode) + "  " + "溫度" + $w.todayHighTemp.round.to_s + "到" + $w.todayLowTemp.round.to_s + "\n" + weatherDB(todaycode,mode)
 			end
 			
 		when "tomorrow"
 		
 			if mode == 1
-				s = "天氣預報 天氣預報 明天"+$w.localText(local)+"地區 天氣"+ $w.code2text(tomorrowcode) + "  " +"溫度" + $w.tomorrowHighTemp + "到" + $w.tomorrowLowTemp + "\n" + weatherDB(tomorrowcode,mode)
+				s = "天氣預報 天氣預報 明天"+$w.localText(local)+"地區 天氣"+ $w.code2text(tomorrowcode) + "  " +"溫度" + $w.tomorrowHighTemp.round.to_s + "到" + $w.tomorrowLowTemp.round.to_s + "\n" + weatherDB(tomorrowcode,mode)
 			end
 			if mode == 2
-				s = "明天"+$w.localText(local)+"地區 天氣"+ $w.code2text(tomorrowcode) + "  " +"溫度" + $w.tomorrowHighTemp + "到" + $w.tomorrowLowTemp + "\n" + weatherDB(tomorrowcode,mode)
+				s = "明天"+$w.localText(local)+"地區 天氣"+ $w.code2text(tomorrowcode) + "  " +"溫度" + $w.tomorrowHighTemp.round.to_s + "到" + $w.tomorrowLowTemp.round.to_s + "\n" + weatherDB(tomorrowcode,mode)
 			end
 		
 	end

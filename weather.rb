@@ -55,7 +55,7 @@ class ReWeather
 		
 		@nowWeatherCode = nowData['weather'][0]['id']
 		#@nowWeatherText = nowData["weather"]["main"]
-		@nowTemp = nowData['main']['temp']
+		@nowTemp = nowData['main']['temp'] - 273.15
 		#@nowDate = xmlweather['channel'][0]['item'][0]['condition'][0]['date']
 	
 	
@@ -72,6 +72,8 @@ class ReWeather
 				@todayLowTemp =  fiveDayData[i]["main"]["temp_min"]
 			end
 		end
+		@todayHighTemp -= 273.15
+		@todayLowTemp -= 273.15
 		
 		@tomorrowWeatherCode =	fiveDayData[11]['weather'][0]['id']		
 		@tomorrowHighTemp = 0
@@ -85,6 +87,9 @@ class ReWeather
 				@tomorrowLowTemp =  fiveDayData[i]["main"]["temp_min"]
 			end
 		end
+		
+		@tomorrowHighTemp -= 273.15
+		@tomorrowLowTemp -= 273.15
 			
 		#@tomorrowDate = xmlweather['channel'][0]['item'][0]['forecast'][1]['date'] + xmlweather['channel'][0]['item'][0]['forecast'][1]['day']
 		#@tomorrowWeatherCode = xmlweather['channel'][0]['item'][0]['forecast'][1]['code']
