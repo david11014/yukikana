@@ -366,7 +366,7 @@ end
 
 def weatherString(time,local,mode)  #mode: 1 = 愛理, 2 = GEJI姐
 
-	$w=ReWeather.new
+	$w = ReWeather.new
 	$w.setWeather($w.localCode(local))
 	nowcode = $w.nowWeatherCode.to_i
 	todaycode = $w.todayWeatherCode.to_i
@@ -383,28 +383,28 @@ def weatherString(time,local,mode)  #mode: 1 = 愛理, 2 = GEJI姐
 		when "now"
 			
 			if mode == 1
-				s = "天氣預報 天氣預報 現在"+$w.localText(local)+"地區 天氣"+ code2text(nowcode) +"  "+ "溫度" + $w.nowTemp + "\n" + weatherDB(nowcode,mode)
+				s = "天氣預報 天氣預報 現在"+$w.localText(local)+"地區 天氣"+ $w.code2text(nowcode) +"  "+ "溫度" + $w.nowTemp + "\n" + weatherDB(nowcode,mode)
 			end
 			if mode == 2
-				s = "現在"+$w.localText(local)+"地區 天氣"+ code2text(nowcode) + "  " + "溫度" + $w.nowTemp + "\n" + weatherDB(nowcode,mode)
+				s = "現在"+$w.localText(local)+"地區 天氣"+ $w.code2text(nowcode) + "  " + "溫度" + $w.nowTemp + "\n" + weatherDB(nowcode,mode)
 			end
 			
 		when "today"
 			
 			if mode == 1
-				s = "天氣預報 天氣預報 今天"+$w.localText(local)+"地區 天氣"+ code2text(todaycode) + "  " + "溫度" + $w.todayHighTemp + "到" + $w.todayLowTemp + "\n" + weatherDB(todaycode,mode)
+				s = "天氣預報 天氣預報 今天"+ $w.localText(local) + "地區 天氣"+ $w.code2text(todaycode) + "  " + "溫度" + ($w.todayHighTemp-273.15).round.to_s + "到" + ($w.todayLowTemp-273.15).round.to_s + "\n" + weatherDB(todaycode,mode)
 			end
 			if mode == 2
-				s = "今天"+$w.localText(local)+"地區 天氣"+ code2text(todaycode) + "  " + "溫度" + $w.todayHighTemp + "到" + $w.todayLowTemp + "\n" + weatherDB(todaycode,mode)
+				s = "今天"+$w.localText(local)+"地區 天氣"+ $w.code2text(todaycode) + "  " + "溫度" + ($w.todayHighTemp-273.15).round.to_s + "到" + ($w.todayLowTemp-273.15).round.to_s + "\n" + weatherDB(todaycode,mode)
 			end
 			
 		when "tomorrow"
 		
 			if mode == 1
-				s = "天氣預報 天氣預報 明天"+$w.localText(local)+"地區 天氣"+ code2text(tomorrowcode) + "  " +"溫度" + $w.tomorrowHighTemp + "到" + $w.tomorrowLowTemp + "\n" + weatherDB(tomorrowcode,mode)
+				s = "天氣預報 天氣預報 明天"+$w.localText(local)+"地區 天氣"+ $w.code2text(tomorrowcode) + "  " +"溫度" + $w.tomorrowHighTemp + "到" + $w.tomorrowLowTemp + "\n" + weatherDB(tomorrowcode,mode)
 			end
 			if mode == 2
-				s = "明天"+$w.localText(local)+"地區 天氣"+ code2text(tomorrowcode) + "  " +"溫度" + $w.tomorrowHighTemp + "到" + $w.tomorrowLowTemp + "\n" + weatherDB(tomorrowcode,mode)
+				s = "明天"+$w.localText(local)+"地區 天氣"+ $w.code2text(tomorrowcode) + "  " +"溫度" + $w.tomorrowHighTemp + "到" + $w.tomorrowLowTemp + "\n" + weatherDB(tomorrowcode,mode)
 			end
 		
 	end
@@ -415,58 +415,6 @@ def weatherString(time,local,mode)  #mode: 1 = 愛理, 2 = GEJI姐
 	
 	return s
 	
-end
-
-def code2text(code)
-	case code
-		when 1  ; return "熱帶風暴"
-		when 2  ; return "颶風"
-		when 3  ; return "強雷雨"
-		when 4  ; return "雷雨"
-		when 5  ; return "雨雪混合"
-		when 6  ; return "混合雨和雨夾雪"
-		when 7  ; return "混合雪和雨夾雪"
-		when 8  ; return "凍結小雨"
-		when 9  ; return "小雨"
-		when 10 ; return "凍雨"
-		when 11 ; return "陣雨"
-		when 12 ; return "陣雨"
-		when 13 ; return "小雪"
-		when 14 ; return "小雪"
-		when 15 ; return "吹雪"
-		when 16 ; return "雪"
-		when 17 ; return "冰雹"
-		when 18 ; return "雨夾雪"
-		when 19 ; return "沙塵"
-		when 20 ; return "有霧"
-		when 21 ; return "霾"
-		when 22 ; return "多煙塵"
-		when 23 ; return "大風"
-		when 24 ; return "多風"
-		when 25 ; return "寒冷"
-		when 26 ; return "多雲"
-		when 27 ; return "晚上晴時多雲"
-		when 28 ; return "白天晴時多雲"
-		when 29 ; return "晚上晴時多雲"
-		when 30 ; return "白天晴時多雲"
-		when 31 ; return "夜晚晴朗"
-		when 32 ; return "陽光明媚"
-		when 33 ; return "夜間天空清澈"
-		when 34 ; return "白天天空清澈"
-		when 35 ; return "混合雨和冰雹"
-		when 36 ; return "大熱天"
-		when 37 ; return "局部地區性雷雨"
-		when 38 ; return "偶有雷雨"
-		when 39 ; return "偶有雷雨"
-		when 40 ; return "零星陣雨"
-		when 41 ; return "大雪"
-		when 42 ; return "零星陣雪"
-		when 43 ; return "大雪"
-		when 44 ; return "晴間多雲"
-		when 45 ; return "雷陣雨"
-		when 46 ; return "陣雪"
-		when 47 ; return "局部區域性雷陣雨"
-	end
 end
 
 def todayweatherreport(local,p=nil)
@@ -555,8 +503,7 @@ while true
 	
 	case gets.chomp
 		when "wetoday"
-			todayweatherreport($mysite,nil)
-		
+			todayweatherreport($mysite,nil)		
 		
 		when "wetomorrow"
 			tomorrowweatherreport($mysite,nil)
@@ -569,21 +516,14 @@ while true
 		
 		when "close"
 			break
-		when "rcity"
-			CityUrl = "https://works.ioa.tw/weather/api/all.json"
-			puts(JSON.parse(Net::HTTP.get_response(URI.parse(CityUrl)).body))
-			#CityUrl ="https://works.ioa.tw/weather/api/towns/1.json"
-			#puts(JSON.parse(Net::HTTP.get_response(URI.parse(CityUrl)).body))
-			#CityUrl = "https://works.ioa.tw/weather/api/weathers/1.json"
-			#puts(JSON.parse(Net::HTTP.get_response(URI.parse(CityUrl)).body))					
-			
+				
 		when "chsite"
 			puts "請輸入地名"+"\n" 
 			cmd = gets.chomp
 			old_site = $mysite
 			$mysite = cmd 
 			chsite(cmd)
-			s = "因為愛理搬家了 所以預報地區從"+ old_site.to_s+"換成"+$mysite.to_s+"了歐 >///<"
+			s = "因為愛理搬家了 所以預報地區從" + old_site.to_s + "換成" + $mysite.to_s + "了歐 >///<"
 			puts(s)
 			addPlurk(s,nil)
 

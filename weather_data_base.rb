@@ -1,12 +1,12 @@
 ﻿def weatherDB( wecode=nil ,mode = nil)
 	s = ""
-	case wecode
+	case (wecode/100).round
 		when 0
 			if mode == 1
 			end
 			if mode ==2
 			end
-		when 1
+		when 2
 			if mode == 1
 			end
 			if mode ==2
