@@ -235,56 +235,86 @@ class ReWeather
 	end
 	
 	def code2text(code)
-	case code
-		when 1  ; return "熱帶風暴"
-		when 2  ; return "颶風"
-		when 3  ; return "強雷雨"
-		when 4  ; return "雷雨"
-		when 5  ; return "雨雪混合"
-		when 6  ; return "混合雨和雨夾雪"
-		when 7  ; return "混合雪和雨夾雪"
-		when 8  ; return "凍結小雨"
-		when 9  ; return "小雨"
-		when 10 ; return "凍雨"
-		when 11 ; return "陣雨"
-		when 12 ; return "陣雨"
-		when 13 ; return "小雪"
-		when 14 ; return "小雪"
-		when 15 ; return "吹雪"
-		when 16 ; return "雪"
-		when 17 ; return "冰雹"
-		when 18 ; return "雨夾雪"
-		when 19 ; return "沙塵"
-		when 20 ; return "有霧"
-		when 21 ; return "霾"
-		when 22 ; return "多煙塵"
-		when 23 ; return "大風"
-		when 24 ; return "多風"
-		when 25 ; return "寒冷"
-		when 26 ; return "多雲"
-		when 27 ; return "晚上晴時多雲"
-		when 28 ; return "白天晴時多雲"
-		when 29 ; return "晚上晴時多雲"
-		when 30 ; return "白天晴時多雲"
-		when 31 ; return "夜晚晴朗"
-		when 32 ; return "陽光明媚"
-		when 33 ; return "夜間天空清澈"
-		when 34 ; return "白天天空清澈"
-		when 35 ; return "混合雨和冰雹"
-		when 36 ; return "大熱天"
-		when 37 ; return "局部地區性雷雨"
-		when 38 ; return "偶有雷雨"
-		when 39 ; return "偶有雷雨"
-		when 40 ; return "零星陣雨"
-		when 41 ; return "大雪"
-		when 42 ; return "零星陣雪"
-		when 43 ; return "大雪"
-		when 44 ; return "晴間多雲"
-		when 45 ; return "雷陣雨"
-		when 46 ; return "陣雪"
-		when 47 ; return "局部區域性雷陣雨"
-	end
-	weText ={'thunderstorm with light rain'=>200,
+	
+	mode = 1
+	
+	if mode == 1
+		weText ={'小雷雨'=>200,
+			'雷陣雨'=>201,
+			'較大的雷雨'=>202,
+			'輕雷暴'=>210,
+			'雷雨'=>211,
+			'大雷雨'=>212,
+			'雷暴'=>221,
+			'雷雨與輕微的毛毛雨'=>230,
+			'雷雨帶毛毛雨'=>231,
+			'有較大的毛毛雨與雷雨'=>232,
+			'毛毛雨與閃電'=>300,
+			'細雨'=>301,
+			'稍強的毛毛雨'=>302,
+			'輕微毛毛雨'=>310,
+			'毛毛雨'=>311,
+			'強烈的毛毛雨'=>312,
+			'較大的毛毛雨'=>313,
+			'很大的毛毛雨'=>314,
+			'shower drizzle'=>321,
+			'小雨'=>500,
+			'中雨'=>501,
+			'強烈的雨水'=>502,
+			'很大的雨'=>503,
+			'極端的雨'=>504,
+			'凍雨'=>511,
+			'輕度淋雨'=>520,
+			'淋雨'=>521,
+			'強烈的雨淋'=>522,
+			'襤褸淋浴雨'=>531,
+			'小雪'=>600,
+			'雪'=>601,
+			'暴雪'=>602,
+			'霰'=>611,
+			'淋浴雨夾雪'=>612,
+			'輕微的雨雪'=>615,
+			'雨雪'=>616,
+			'輕淋雨'=>620,
+			'淋雨'=>621,
+			'沉重的雨淋雪'=>622,
+			'薄霧'=>701,
+			'抽煙'=>711,
+			'陰霾'=>721,
+			'沙子，灰塵較多'=>731,
+			'多霧'=>741,
+			'多砂'=>751,
+			'灰塵'=>761,
+			'有火山灰'=>762,
+			'狂風'=>771,
+			'龍捲風混著沙'=>781,
+			'晴朗的天空'=>800,
+			'幾雲'=>801,
+			'疏云，零星散落的雲朵'=>802,
+			'破雲'=>803,
+			'陰雲'=>804,
+			'龍捲風'=>900,
+			'熱帶風暴'=>901,
+			'颶風'=>902,
+			'冷'=>903,
+			'熱'=>904,
+			'有風'=>905,
+			'冰雹'=>906,
+			'安定'=>951,
+			'輕微的微風'=>952,
+			'微風'=>953,
+			'和風'=>954,
+			'清新微風'=>955,
+			'強風'=>956,
+			'風大，風附近'=>957,
+			'大風'=>958,
+			'強烈的大風'=>959,
+			'風暴'=>960,
+			'急風暴雨'=>961,
+			'颱風'=>962
+	}
+	else
+		weText ={'thunderstorm with light rain'=>200,
 		'thunderstorm with rain'=>201,
 		'thunderstorm with heavy rain'=>202,
 		'light thunderstorm'=>210,
@@ -358,6 +388,8 @@ class ReWeather
 		'violent storm'=>961,
 		'hurricane'=>962	
 	}
+	end
+	
 	return weText.key(code)
 end
 	

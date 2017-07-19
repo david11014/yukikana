@@ -143,7 +143,7 @@ def checkcommand()
 			end
 		end
 	rescue
-		ss = to_s + "get plurk has error" + "\n" + $!.to_s
+		ss = to_s + " get plurk has error" + "\n" + $!.to_s
 		print ss + "\n"
 		#recordError(ss)
 		sleep 5
@@ -470,6 +470,7 @@ while true
 		tomorrowweatherreport($mysite,nil)
 		sleep(120)
 	end
+	
 	#print "reportweather end"+"\n"
 	sleep 1
 	rescue
@@ -485,7 +486,7 @@ Thread.new{
 		t = Time.now
 		begin
 		#print "checkcommand start "+"\n"
-		checkcommand()
+		#checkcommand()
 		#print "checkcommand end "+"\n"
 		sleep 1
 		rescue

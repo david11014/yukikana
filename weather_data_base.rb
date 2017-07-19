@@ -1,6 +1,6 @@
 ﻿def weatherDB( wecode=nil ,mode = nil)
 	s = ""
-	case (wecode/100).round
+	case wecode
 		when 0
 			if mode == 1
 			end
