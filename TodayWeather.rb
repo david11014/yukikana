@@ -108,7 +108,6 @@ def getUnreadPlurk
 	return json
 end
 
-
 def checkresponse(plurkid)
 	
 	json = nil
@@ -145,6 +144,8 @@ def checkcommand()
 	rescue
 		ss = to_s + " get plurk has error" + "\n" + $!.to_s
 		print ss + "\n"
+		print json
+		print "\n"
 		#recordError(ss)
 		sleep 5
 		retry
@@ -164,8 +165,10 @@ def checkcommand()
 				site = $~[1]
 				
 				if checkresponse(pl["plurk_id"]) == true
-					printf site
-					printf "\n"
+					if(site != nil)					
+						printf site
+						printf "\n"
+					end
 					responsePlurk(pl["plurk_id"],"是 知道了")
 					
 					s = weatherString("now",site,2)
@@ -181,8 +184,10 @@ def checkcommand()
 				site = $~[1]
 				
 				if checkresponse(pl["plurk_id"]) == true
-					printf site
-					printf "\n"
+					if(site != nil)					
+						printf site
+						printf "\n"
+					end
 					responsePlurk(pl["plurk_id"],"是 知道了")
 					
 					s = weatherString("tomorrow",site,2)
@@ -197,8 +202,11 @@ def checkcommand()
 				site = $~[1]
 				
 				if checkresponse(pl["plurk_id"]) == true
-					printf site
-					printf "\n"
+					if(site != nil)					
+						printf site
+						printf "\n"
+					end
+						
 					responsePlurk(pl["plurk_id"],"是 知道了")
 					
 					s = weatherString("today",site,2)
@@ -366,6 +374,9 @@ end
 
 def weatherString(time,local,mode)  #mode: 1 = 愛理, 2 = GEJI姐
 
+	if(local == nil)
+		local = $mysite
+	end
 	$w = ReWeather.new
 	$w.setWeather($w.localCode(local))
 	nowcode = $w.nowWeatherCode.to_i
@@ -437,7 +448,7 @@ end
 
 def recordError(text)
 	
-	begin
+	begin		
 		re = File.open("./record","a+")
 		re.write(text + "\n")
 		re.write("==============================="+"\n")
@@ -486,7 +497,7 @@ Thread.new{
 		t = Time.now
 		begin
 		#print "checkcommand start "+"\n"
-		#checkcommand()
+		checkcommand()
 		#print "checkcommand end "+"\n"
 		sleep 1
 		rescue
@@ -531,6 +542,9 @@ while true
 		when "nowsite"
 			 puts "現在的預報位置:"+$mysite
 			 
+		when "post"
+			s = gets.chomp
+			addPlurk(s,nil)
 		when "test"
 			addPlurk("愛理發文系統測試中",nil)
 			 
